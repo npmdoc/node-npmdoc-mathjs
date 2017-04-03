@@ -1,17 +1,40 @@
 {
-    "buildNpmdoc":"mathjs",
+    "author": "kai zhu <kaizhu256@gmail.com>",
+    "buildNpmdoc": "mathjs",
+    "description": "api documentation for [mathjs (v3.11.2)](http://mathjs.org) [![npm package](https://img.shields.io/npm/v/npmdoc-mathjs.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-mathjs) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-mathjs.svg)](https://travis-ci.org/npmdoc/node-npmdoc-mathjs)",
     "devDependencies": {
-        "mathjs": "*",
         "electron-lite": "kaizhu256/node-electron-lite#alpha",
+        "mathjs": "*",
         "utility2": "kaizhu256/node-utility2#alpha"
     },
-    "name":"npmdoc-mathjs",
+    "engines": {
+        "node": ">=4.0"
+    },
+    "homepage": "https://github.com/npmdoc/node-npmdoc-mathjs",
+    "keywords": [
+        "documentation",
+        "mathjs"
+    ],
+    "license": "MIT",
+    "main": "lib.npmdoc_mathjs.js",
+    "name": "npmdoc-mathjs",
+    "nameAlias": "npmdoc_mathjs",
+    "nameOriginal": "npmdoc-mathjs",
+    "os": [
+        "darwin",
+        "linux"
+    ],
     "repository": {
         "type": "git",
         "url": "https://github.com/npmdoc/node-npmdoc-mathjs.git"
     },
     "scripts": {
-        "build-ci": "utility2 shReadmeTest build_ci.sh"
+        "build-ci": "utility2 shReadmeTest build_ci.sh",
+        "env": "env",
+        "heroku-postbuild": "(set -e; npm install \"kaizhu256/node-utility2#alpha\"; utility2 shDeployHeroku)",
+        "postinstall": "if [ -f npm_scripts.sh ]; then ./npm_scripts.sh postinstall; fi",
+        "start": "(set -e; export PORT=${PORT:-8080}; utility2 start test.js)",
+        "test": "(set -e; export PORT=$(utility2 shServerPortRandom); utility2 test test.js)"
     },
     "version": "0.0.1"
 }
